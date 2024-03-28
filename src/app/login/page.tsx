@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Button,
@@ -12,7 +13,11 @@ import assets from "@/assets";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-type FormValues = {
+import { toast } from "sonner";
+import { userLogin } from "@/services/actions/userLogin";
+import { storeUserInfo } from "@/services/auth.services";
+
+export type FormValues = {
   email: string;
   password: string;
 };
@@ -29,6 +34,14 @@ const LoginPage = () => {
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
     // console.log(data);
     try {
+      const res = await userLogin(values);
+      console.log(res);
+      //toaster
+      if (res?.data?.accessToken) {
+        storeUserInfo({ accessToken: res?.data?.accessToken });
+        toast.success(res?.message);
+        // router.push("/login");
+      }
     } catch (error: any) {
       console.error(error.message);
     }
