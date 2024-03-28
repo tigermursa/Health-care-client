@@ -13,6 +13,9 @@ import assets from "@/assets";
 import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { modifyPayload } from "@/utils/modifyPayload";
+import { registerPatient } from "@/services/actions/registerPatient";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 interface IPatientData {
   name: string;
   email: string;
@@ -26,15 +29,27 @@ interface IPatientRegisterFromData {
 }
 
 const RegisterPage = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<IPatientRegisterFromData>();
-  const onSubmit: SubmitHandler<IPatientRegisterFromData> = (values) => {
+  const onSubmit: SubmitHandler<IPatientRegisterFromData> = async (values) => {
     const data = modifyPayload(values);
-    console.log(data);
+    // console.log(data);
+    try {
+      const res = await registerPatient(data);
+      console.log(res);
+      //toaster
+      if (res?.data?.id) {
+        toast.success(res?.message);
+        router.push("/login");
+      }
+    } catch (error: any) {
+      console.error(error.message);
+    }
   };
 
   return (

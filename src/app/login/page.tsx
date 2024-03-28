@@ -10,7 +10,30 @@ import {
 import Image from "next/image";
 import assets from "@/assets";
 import Link from "next/link";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+type FormValues = {
+  email: string;
+  password: string;
+};
+
 const LoginPage = () => {
+  // const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = async (values) => {
+    // console.log(data);
+    try {
+    } catch (error: any) {
+      console.error(error.message);
+    }
+  };
+
   return (
     <Container>
       <Stack
@@ -46,14 +69,16 @@ const LoginPage = () => {
             </Box>
           </Stack>
           <Box>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
                   <TextField
-                    label="Name"
+                    label="Email"
+                    type="email"
                     variant="outlined"
                     size="small"
                     fullWidth={true}
+                    {...register("email")}
                   />
                 </Grid>
                 <Grid item md={6}>
@@ -63,13 +88,21 @@ const LoginPage = () => {
                     variant="outlined"
                     size="small"
                     fullWidth={true}
+                    {...register("password")}
                   />
                 </Grid>
               </Grid>
-              <Typography mb={1} mt={1} textAlign={"end"} component="p" fontWeight={600}>
+              <Typography
+                mb={1}
+                mt={1}
+                textAlign={"end"}
+                component="p"
+                fontWeight={600}
+              >
                 Forgot Password ?
               </Typography>
               <Button
+                type="submit"
                 fullWidth={true}
                 sx={{
                   margin: "10px 0px",
