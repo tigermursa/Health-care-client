@@ -5,11 +5,20 @@ import {
   useForm,
 } from "react-hook-form";
 
-const PHForm = ({ children }: { children: React.ReactNode }) => {
+const PHForm = ({
+  children,
+  onSubmit,
+}: {
+  children: React.ReactNode;
+  onSubmit: SubmitErrorHandler<FieldValues>;
+}) => {
   const methods = useForm();
-  const { handleSubmit } = methods;
-  const submit: SubmitErrorHandler<FieldValues> = (data) => console.log(data);
-
+  const { handleSubmit, reset } = methods;
+  const submit: SubmitErrorHandler<FieldValues> = (data) => {
+    //console.log(data);
+    onSubmit(data);
+    reset()
+  };
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(submit)}>{children}</form>
