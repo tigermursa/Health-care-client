@@ -8,16 +8,29 @@ import {
 const PHForm = ({
   children,
   onSubmit,
+  resolver,
+  defaultValues,
 }: {
   children: React.ReactNode;
   onSubmit: SubmitErrorHandler<FieldValues>;
+  resolver: any;
+  defaultValues: Record<string,any>
 }) => {
-  const methods = useForm();
+  const fromConfig: any = {};
+
+  if (resolver) {
+    fromConfig["resolver"] = resolver;
+  }
+  if (defaultValues) {
+    fromConfig["defaultValues"] = defaultValues;
+  }
+
+  const methods = useForm(fromConfig);
   const { handleSubmit, reset } = methods;
   const submit: SubmitErrorHandler<FieldValues> = (data) => {
     //console.log(data);
     onSubmit(data);
-    reset()
+    reset();
   };
   return (
     <FormProvider {...methods}>

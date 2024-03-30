@@ -75,7 +75,7 @@ const RegisterPage = () => {
             </Box>
           </Stack>
           <Box>
-            <PHForm onSubmit={handleRegister}>
+            <PHForm onSubmit={handleRegister} resolver>
               <Grid container spacing={2} my={1}>
                 <Grid item md={12}>
                   <PHInput
@@ -83,6 +83,7 @@ const RegisterPage = () => {
                     variant="outlined"
                     fullWidth={true}
                     name="patient.name"
+                    required={true}
                   />
                 </Grid>
                 <Grid item md={6}>
@@ -92,6 +93,7 @@ const RegisterPage = () => {
                     variant="outlined"
                     fullWidth={true}
                     name="patient.email"
+                    required={true}
                   />
                 </Grid>
                 <Grid item md={6}>
@@ -101,6 +103,7 @@ const RegisterPage = () => {
                     variant="outlined"
                     fullWidth={true}
                     name="password"
+                    required={true}
                   />
                 </Grid>
                 <Grid item md={6}>
@@ -110,6 +113,7 @@ const RegisterPage = () => {
                     variant="outlined"
                     fullWidth={true}
                     name="patient.contactNumber"
+                    required={true}
                   />
                 </Grid>
                 <Grid item md={6}>
@@ -118,6 +122,7 @@ const RegisterPage = () => {
                     variant="outlined"
                     fullWidth={true}
                     name="patient.address"
+                    required={true}
                   />
                 </Grid>
               </Grid>
