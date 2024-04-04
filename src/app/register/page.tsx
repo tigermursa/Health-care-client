@@ -61,7 +61,7 @@ const RegisterPage = () => {
         //toaster
         if (result?.data?.accessToken) {
           storeUserInfo({ accessToken: result?.data?.accessToken });
-          router.push("/");
+          router.push("/dashboard");
         }
       }
     } catch (error: any) {

@@ -22,7 +22,6 @@ import PHInput from "@/Components/Forms/PHInput";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-
 export const validationSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   password: z.string().min(6, "Password must be 6 characters"),
@@ -41,7 +40,7 @@ const LoginPage = () => {
       if (res?.data?.accessToken) {
         storeUserInfo({ accessToken: res?.data?.accessToken });
         toast.success(res?.message);
-        router.push("/");
+        router.push("/dashboard");
       } else {
         toast.success(res?.message);
       }
