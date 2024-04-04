@@ -21,7 +21,7 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
                 },
                 {
                     title: "Manage Users",
-                    path: `${role}`,
+                    path: `${role}/manage-users`,
                     icon: GroupIcon,
                 });
             break;
@@ -35,28 +35,28 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
                 },
                 {
                     title: "Specialties",
-                    path: `${role}`,
+                    path: `${role}/specialties`,
                     icon: Try,
                 },
                 {
                     title: "Doctors",
-                    path: `${role}`,
+                    path: `${role}/doctors`,
                     icon: MedicalInformation,
                 },
                 {
                     title: "Schedules",
-                    path: `${role}`,
+                    path: `${role}/schedules`,
                     icon: CalendarMonth,
                 },
 
                 {
                     title: "Appointments",
-                    path: `${role}`,
+                    path: `${role}/appointments`,
                     icon: MedicalInformation,
                 },
                 {
                     title: "Reviews",
-                    path: `${role}`,
+                    path: `${role}/reviews`,
                     icon: Reviews,
                 }
 
@@ -72,7 +72,7 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
                 },
                 {
                     title: "Schedules",
-                    path: `${role}`,
+                    path: `${role}/schedules`,
                     icon: CalendarMonth,
                 },
 
@@ -95,17 +95,17 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
                 },
                 {
                     title: "Appointments",
-                    path: `${role}`,
+                    path: `${role}/appointment`,
                     icon: MedicalInformation,
                 },
                 {
                     title: "Prescriptions",
-                    path: `${role}`,
+                    path: `${role}/prescription`,
                     icon: MedicalInformationSharp,
                 },
                 {
                     title: "Payment History",
-                    path: `${role}`,
+                    path: `${role}/history`,
                     icon: MedicalInformation,
                 },
 
